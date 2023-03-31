@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
-#include <functional>
+#include <functional> // za std::function
+#include <cassert>
 /*
 ## User
 Направете клас User, който съдържа потребителско име, паролa, имейл, 
@@ -45,8 +46,7 @@ public:
 
 	User& setName(const char* newName) {
 		strcpy_s(this->name, strlen(newName) + 1, newName);
-
-		return*this;
+		return *this;
 	}
 
 };
@@ -58,13 +58,16 @@ private: //reda ima znachenie
 	User* users;
 
 	void copy(const SocialNetwork& other) {
-		this->users = new User[other.capacity];
+		this->capacity = other.capacity;
+		this->size = other.size;
+
+		this->users = new User[this->capacity];
+		assert(this->size <= this->capacity);
 		for (std::size_t i = 0; i < other.size; i++)
 		{
 			this->users[i] = other.users[i];
 		}
-		this->capacity = other.capacity;
-		this->size = other.size;
+		
 	}
 
 	void destroy() {
@@ -96,7 +99,7 @@ public:
 	}
 
 	SocialNetwork& operator=(const SocialNetwork& other) {
-		if (this != &other);
+		if (this != &other)
 		{
 			destroy();
 			copy(other);
