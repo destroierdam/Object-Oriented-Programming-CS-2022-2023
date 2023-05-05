@@ -1,0 +1,13 @@
+---
+Checks: "*,
+        -abseil-*,
+        -altera-*,
+        -android-*,
+        -fuchsia-*,
+        -zircon-*,
+        -llvm*,
+        -modernize-use-trailing-return-type,
+        -modernize-use-default-member-init,
+        -readability-static-accessed-through-instance,
+        -readability-avoid-const-params-in-decls
+"
