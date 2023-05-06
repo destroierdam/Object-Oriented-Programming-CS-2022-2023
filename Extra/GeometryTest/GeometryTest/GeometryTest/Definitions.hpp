@@ -9,12 +9,12 @@ class Definitions {
 public:
 	
 	Definitions() = default;
-	/* Definitions(std::ifstream& someStream) {
+	Definitions(std::ifstream& someStream) {
 		while (someStream.eof() == false) {
 			std::string line;
 			Pair term;
 			std::getline(someStream, line);
-			for (std::size_t i = 1; i < line.size() - 1; ++i) {
+			for (std::size_t i = 1; i < line.size() && i < line.size() - 1; ++i) {
 				if (line[i - 1] == ' ' &&
 					line[i] == '-' &&
 					line[i + 1] == ' ') {
@@ -27,10 +27,9 @@ public:
 			}
 		}
 	}
-	*/
 	
 	void add(std::string term, std::string definition) {
-		this->defs.emplace_back(term, definition);
+		this->defs.push_back(Pair{ term, definition });
 	}
 
 	std::size_t size() {
