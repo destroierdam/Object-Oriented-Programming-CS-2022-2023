@@ -13,6 +13,7 @@ public:
 		this->barcode = barcode;
 		this->price = price;
 	}
+	virtual ~Item() {}
 
 	virtual void print() const = 0;
 
