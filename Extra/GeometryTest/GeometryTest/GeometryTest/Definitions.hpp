@@ -28,7 +28,7 @@ public:
 		}
 	}
 	
-	void add(std::string term, std::string definition) {
+	void add(const std::string& term, const std::string& definition) {
 		this->defs.push_back(Pair{ term, definition });
 	}
 
